@@ -1,0 +1,4 @@
+com\mycompany\superstarsrfid\RFIDReader.class
+com\mycompany\superstarsrfid\Superstarsrfid.class
+com\mycompany\superstarsrfid\RFIDReader$OnTagsDetectedListener.class
+com\mycompany\superstarsrfid\WebsocketClientEndpoint.class
