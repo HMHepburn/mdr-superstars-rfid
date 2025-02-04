@@ -7,3 +7,5 @@ Java client which manages connection to a websocket server as well as controllin
 2. In RFIDReader.java - modify the COM5 value to match the USB port that your RFID reader has been plugged into
 
 I will update this file as needed
+
+mmmm RFID scanner
