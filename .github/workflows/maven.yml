@@ -14,6 +14,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:  # 🔹 Add this block at the top
+  contents: write
+  security-events: write
+
 jobs:
   build:
 
