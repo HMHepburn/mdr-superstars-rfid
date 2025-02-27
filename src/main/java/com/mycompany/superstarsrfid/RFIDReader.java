@@ -21,6 +21,7 @@ public class RFIDReader {
 
     // Interface to describe onTagsDetectedListener variable
     public interface OnTagsDetectedListener {
+
         void onTagsDetected(CAENRFIDTag[] tags);
     }
 
@@ -35,15 +36,24 @@ public class RFIDReader {
 
         try {
             // IMPORTANT: CHANGE TO WHATEVER PORT IS BEING USED BY CURRENT DEVICE!
-            reader.Connect(CAENRFIDPort.CAENRFID_RS232, "COM5");
+            reader.Connect(CAENRFIDPort.CAENRFID_RS232, "COM7");
 
             CAENRFIDLogicalSource source = reader.GetSource("Source_0");
+            reader.SetPower(450);
 
             while (true) {
                 CAENRFIDTag[] tags = source.InventoryTag();
-                
-                if(listener != null) {
+
+                if(tags != null && tags.length > 0 && listener != null) {
                     listener.onTagsDetected(tags);
+                } else {
+                    System.out.println("no tags detected this cycle");
+                }
+
+                try {
+                    Thread.sleep(500); // Wait 500ms before the next scan
+                } catch (InterruptedException e) {
+                    System.out.println("Reader thread interrupted.");
                 }
             }
 

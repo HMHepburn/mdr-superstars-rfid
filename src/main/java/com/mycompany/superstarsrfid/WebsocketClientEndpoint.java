@@ -47,7 +47,7 @@ public class WebsocketClientEndpoint {
 
     @OnMessage
     public void onMessage(String message) {
-        System.out.println("Received raw message: " + message);
+        //System.out.println("Received raw message: " + message);
         
         try {
             JSONObject json = new JSONObject(message);
@@ -59,7 +59,7 @@ public class WebsocketClientEndpoint {
                     //startDetection();
                     break;
                 case "STOP_DETECTION":
-                    System.out.println("STARTING DETECTION");
+                    System.out.println("STOPPING DETECTION");
                     //stopDetection();
                     break;
                 default:
@@ -74,7 +74,8 @@ public class WebsocketClientEndpoint {
         JSONObject json = new JSONObject()
             .put("type", "error")
             .put("value", error);
-        sendMessage(json.toString());
+        //sendMessage(json.toString());
+        System.out.println(error);
     }
 
     public void sendMessage(String message) {
